@@ -1,15 +1,27 @@
 param(
-    [string]$source,
+    [string]$file,
     [string]$destination
 )
 
-if (!$source) {
-    Write-Error "Error: Source file path is not specified."
+if (!$file) {
+    Write-Error "Error: File name is not specified."
     return
 }
 
-if (!(Test-Path $source)) {
-    Write-Error "Error: Source file does not exist."
+if (Test-Path -PathType Container $file) {
+    Write-Error "Error: $file is a directory."
+    return
+}
+
+$path = Resolve-Path $file
+
+if ($path.Count -gt 1) {
+    Write-Error "Error: Ambiguous file name."
+    return
+}
+
+if (!(Test-Path $path.Path)) {
+    Write-Error "Error: File does not exist."
     return
 }
 
@@ -23,4 +35,13 @@ if (!(Test-Path $destination)) {
     return
 }
 
-Copy-Item $source $destination
+$files = Get-ChildItem -Path $path.Path -File
+
+if ($files.Count -eq 0) {
+    Write-Error "Error: No file found."
+    return
+}
+
+foreach ($f in $files) {
+    Copy-Item $f.FullName "$destination\$($f.Name)"
+}

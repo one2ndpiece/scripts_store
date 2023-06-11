@@ -1,5 +1,5 @@
 param (
-    [string]$destinationDirectory = "D:\Localgit\test_clone\gomi" # コピー先ディレクトリを指定
+    [string]$destinationDirectory = "FiePath" # コピー先ディレクトリを指定
 )
 
 $excludePs1Files = $true # .ps1 ファイルを除外するかどうかのフラグを指定。$true の場合は除外し、$false の場合は除外しない。

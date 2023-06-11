@@ -10,7 +10,7 @@ Sub DeleteDuplicateEmails()
     Dim intIndex As Integer
 
     Set objNamespace = GetNamespace("MAPI")
-    Set objArchiveFolder = GetFolderPath("tonami-yuhto@ust.jmuc.co.jp\アーカイブ")
+    Set objArchiveFolder = GetFolderPath("name@domain\Folder")
     Set objItems = objArchiveFolder.Items
     Set objDictionary = CreateObject("Scripting.Dictionary")
 

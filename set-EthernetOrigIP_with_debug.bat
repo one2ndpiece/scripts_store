@@ -3,11 +3,11 @@
 setlocal
 
 set "interfaceName=イーサネット"
-set "ipAddress=172.24.130.53"
-set "subnetMask=255.255.255.0"
-set "defaultGateway=172.24.130.1"
-set "preferredDns=172.24.2.111"
-set "alternateDns=172.28.1.131"
+set "ipAddress=YourIPAddress"
+set "subnetMask=255.255.255.0みたいなやつ"
+set "defaultGateway=デフォルトゲートウェイ"
+set "preferredDns=優先DNS"
+set "alternateDns=代替DNS"
 
 echo Interface Name: %interfaceName%
 echo IP Address: %ipAddress%
